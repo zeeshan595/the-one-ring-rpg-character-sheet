@@ -2,7 +2,6 @@
   "name": "The One Ring RPG Character Sheet",
   "version": "1.0.0",
   "manifest_version": 1,
-  "homepage_url": "https://github.com/zeeshan595/shadow-sheet",
   "author": "Zeeshan",
   "action": {
     "title": "The One Ring RPG Character Sheet",
