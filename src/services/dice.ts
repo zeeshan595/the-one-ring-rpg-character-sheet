@@ -67,6 +67,13 @@ export type RollResultWithDiceInfo = RollResult & {
   output: string;
 };
 
+function matchAllInArray<T>(arr: T[], item: T) {
+  for (const entry of arr) {
+    if (entry != item) return false;
+  }
+  return true;
+}
+
 export function makeRollResult(
   featDice: number[],
   successDice: number[],
@@ -95,7 +102,7 @@ export function makeRollResult(
       // handle special symbol
       if (critSuccess) {
         symbol = SymbolType.GandalfsRune;
-      } else if (critFail && featDice == new Array(featDice.length).fill(11)) {
+      } else if (critFail && matchAllInArray(featDice, 11)) {
         symbol = SymbolType.EyeOfSauron;
       }
       // get total
@@ -132,10 +139,7 @@ export function makeRollResult(
       // handle special symbol
       if (critFail) {
         symbol = SymbolType.EyeOfSauron;
-      } else if (
-        critSuccess &&
-        featDice == new Array(featDice.length).fill(12)
-      ) {
+      } else if (critSuccess && matchAllInArray(featDice, 12)) {
         symbol = SymbolType.GandalfsRune;
       }
 
