@@ -462,7 +462,7 @@ const protectionGear = computed({
         </div>
         <div class="column">
           <input type="checkbox" v-model="wary" />
-          <div class="condition-label">Wary</div>
+          <div class="condition-label">Weary</div>
         </div>
         <div class="column">
           <input type="checkbox" v-model="wounded" />

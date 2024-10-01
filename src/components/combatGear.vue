@@ -99,7 +99,7 @@ function setInjury(e: Event, index: number) {
       </template>
     </div>
     <div class="inner-section right-seperator">
-      <h2>Armor</h2>
+      <h2>Armour</h2>
       <div class="row armor">
         <div class="name">name</div>
         <div class="shield">protection</div>
