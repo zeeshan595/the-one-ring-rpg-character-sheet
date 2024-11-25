@@ -145,20 +145,20 @@ export function createCharacter(): Character {
     },
     skills: {
       heart: [
-        { name: "Awe", amount: 0, favoured: false },
-        { name: "Athletics", amount: 0, favoured: false },
-        { name: "Awareness", amount: 0, favoured: false },
-        { name: "Hunting", amount: 0, favoured: false },
-        { name: "Song", amount: 0, favoured: false },
-        { name: "Craft", amount: 0, favoured: false },
-      ],
-      strength: [
         { name: "Enhearten", amount: 0, favoured: false },
         { name: "Travel", amount: 0, favoured: false },
         { name: "Insight", amount: 0, favoured: false },
         { name: "Healing", amount: 0, favoured: false },
         { name: "Courtesy", amount: 0, favoured: false },
         { name: "Battle", amount: 0, favoured: false },
+      ],
+      strength: [
+        { name: "Awe", amount: 0, favoured: false },
+        { name: "Athletics", amount: 0, favoured: false },
+        { name: "Awareness", amount: 0, favoured: false },
+        { name: "Hunting", amount: 0, favoured: false },
+        { name: "Song", amount: 0, favoured: false },
+        { name: "Craft", amount: 0, favoured: false },
       ],
       wits: [
         { name: "Persuade", amount: 0, favoured: false },
