@@ -241,5 +241,10 @@ if (savedCharacter) {
   character.value = JSON.parse(savedCharacter);
 }
 window.setInterval(() => {
-  window.localStorage.setItem("character", JSON.stringify(character));
-}, 100);
+  window.localStorage.setItem(
+    "character",
+    JSON.stringify({
+      ...character.value,
+    })
+  );
+}, 1000);
