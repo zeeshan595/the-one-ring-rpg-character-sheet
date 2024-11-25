@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { DiceRoll } from "@dice-roller/rpg-dice-roller";
+import { sendRollNotification } from "./owlbear";
 
 export const ALL_DICE = ["d4", "d6", "d8", "d10", "d12", "d20", "d100"];
 export const testResult = ref<RollResultWithDiceInfo | null>(null);
@@ -64,6 +65,7 @@ export type RollResult = {
 };
 
 export type RollResultWithDiceInfo = RollResult & {
+  userName?: string;
   output: string;
 };
 
@@ -197,4 +199,5 @@ export function makeRoll(options: RollOptions) {
     ...result,
     output: rollResult.output,
   };
+  sendRollNotification();
 }
