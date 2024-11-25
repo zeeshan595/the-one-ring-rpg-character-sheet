@@ -235,3 +235,11 @@ export function createCharacter(): Character {
 }
 
 export const character = ref<Character>(createCharacter());
+
+const savedCharacter = window.localStorage.getItem("character");
+if (savedCharacter) {
+  character.value = JSON.parse(savedCharacter);
+}
+window.setInterval(() => {
+  window.localStorage.setItem("character", JSON.stringify(character));
+}, 100);
