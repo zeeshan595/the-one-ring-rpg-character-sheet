@@ -34,6 +34,17 @@ const blessing = computed({
     });
   },
 });
+const curses = computed({
+  get() {
+    return props.modelValue.curses;
+  },
+  set(value: string) {
+    emits("update:modelValue", {
+      ...props.modelValue,
+      curses: value,
+    });
+  },
+});
 const calling = computed({
   get() {
     return props.modelValue.calling;
@@ -135,6 +146,10 @@ const gear = computed({
       <div class="text">
         <span>Blessing</span>
         <input type="text" v-model="blessing" />
+      </div>
+      <div class="text">
+        <span>Curse</span>
+        <input type="text" v-model="curses" />
       </div>
       <div class="text">
         <span>Calling</span>

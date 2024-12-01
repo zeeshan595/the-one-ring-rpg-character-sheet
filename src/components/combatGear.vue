@@ -63,31 +63,6 @@ const weapons = computed({
     });
   },
 });
-
-function getInjury(index: number) {
-  return props.modelValue.weapons[index].injury.join(",").toString();
-}
-
-function setInjury(e: Event, index: number) {
-  const injury = (e.target as HTMLInputElement).value;
-  const weapons = JSON.parse(JSON.stringify(props.modelValue.weapons));
-
-  const injuries = injury.split(",");
-  let oneHanded = Number.parseInt(injuries[0]) ?? 0;
-  let twoHanded: null | number = null;
-  if (injuries.length > 1) {
-    twoHanded = Number.parseInt(injuries[1]) ?? 0;
-  }
-
-  if (isNaN(oneHanded)) oneHanded = 0;
-  if (twoHanded != null && isNaN(twoHanded)) twoHanded = 0;
-
-  weapons[index].injury = [oneHanded, twoHanded];
-  emits("update:modelValue", {
-    ...props.modelValue,
-    weapons: [...weapons],
-  });
-}
 </script>
 
 <template>
@@ -141,11 +116,7 @@ function setInjury(e: Event, index: number) {
           <input type="text" v-model="weapons[n - 1].damage" />
         </div>
         <div class="injury">
-          <input
-            type="text"
-            :value="getInjury(n - 1)"
-            @change="(e) => setInjury(e, n - 1)"
-          />
+          <input type="text" v-model="weapons[n - 1].injury" />
         </div>
         <div class="load">
           <input type="text" v-model="weapons[n - 1].load" />

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { ALL_DICE, diceOptions } from "../services/dice";
-import { character } from "../services/character";
+import { character, createCharacter } from "../services/character";
 
 const scrollPosition = ref<number>(document.documentElement.scrollTop);
 setInterval(
@@ -53,7 +53,10 @@ function load() {
       if (!data) return;
       document.body.removeChild(input);
       const rawData = JSON.parse(data);
-      character.value = rawData;
+      character.value = {
+        ...createCharacter(),
+        ...rawData,
+      };
     });
     reader.readAsText(file);
   };
@@ -65,12 +68,16 @@ function load() {
   };
   input.click();
 }
+function clear() {
+  character.value = createCharacter();
+}
 </script>
 
 <template>
   <div class="topbar" :class="{ lift: scrollPosition > 0 }">
     <button @click="load">load</button>
     <button @click="save">save</button>
+    <button @click="clear">clear</button>
     <div class="expand"></div>
     <template v-for="dice in ALL_DICE">
       <img

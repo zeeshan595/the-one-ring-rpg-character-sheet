@@ -9,6 +9,7 @@ export enum CharacterSkillType {
 export type CharacterInfo = {
   name: string;
   culture: string;
+  curses: string;
   blessing: string;
   calling: string;
   living: string;
@@ -28,9 +29,9 @@ export type Armor = {
 };
 export type Weapon = {
   name: string;
-  damage: number;
-  injury: [number, number | null];
-  load: number;
+  damage: string;
+  injury: string;
+  load: string;
   notes: string;
 };
 export type WeaponProficiency = {
@@ -116,6 +117,7 @@ export function createCharacter(): Character {
     info: {
       name: "",
       culture: "",
+      curses: "",
       blessing: "",
       calling: "",
       living: "",
@@ -179,10 +181,10 @@ export function createCharacter(): Character {
         { name: "", amount: 0 },
       ],
       weapons: [
-        { name: "", damage: 0, injury: [0, null], load: 0, notes: "" },
-        { name: "", damage: 0, injury: [0, null], load: 0, notes: "" },
-        { name: "", damage: 0, injury: [0, null], load: 0, notes: "" },
-        { name: "", damage: 0, injury: [0, null], load: 0, notes: "" },
+        { name: "", damage: "0", injury: "0", load: "0", notes: "" },
+        { name: "", damage: "0", injury: "0", load: "0", notes: "" },
+        { name: "", damage: "0", injury: "0", load: "0", notes: "" },
+        { name: "", damage: "0", injury: "0", load: "0", notes: "" },
       ],
       armor: {
         name: "",
@@ -238,7 +240,10 @@ export const character = ref<Character>(createCharacter());
 
 const savedCharacter = window.localStorage.getItem("character");
 if (savedCharacter) {
-  character.value = JSON.parse(savedCharacter);
+  character.value = {
+    ...createCharacter(),
+    ...JSON.parse(savedCharacter),
+  };
 }
 window.setInterval(() => {
   window.localStorage.setItem(
