@@ -70,6 +70,7 @@ function load() {
 }
 function clear() {
   character.value = createCharacter();
+  window.location.reload();
 }
 </script>
 
